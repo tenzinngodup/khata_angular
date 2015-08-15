@@ -1,0 +1,37 @@
+   
+
+    {{StatusMessage}} <br><br>
+
+    <div class="alert alert-success" ng-show="alerts.success">
+    <strong>SUCCESS!</strong>
+    <div>{{alerts.message}}</div>
+      </div>
+<!-- 
+    Tibetan Word:
+      <input type="text" ng-model="word.word"> <br>
+    Tibetan Definition: 
+      <input type="text" ng-model="word.definition"> <br> 
+     English Word:
+      <input type="text" ng-model="word.english_word" > <br>
+     English Definition: 
+      <input type="text" ng-model="word.english_definition" > <br> 
+      <button class="btn btn-success" ng-click='createWord()'>Create</button>
+    <hr> -->
+   
+<form name="userForm" ng-submit="createWord();" novalidate>
+  <div class="form-group" ng-class="{ 'has-error': userForm.word.$invalid }">
+    Tibetan Word: <input type="text" class="form-control" name="word" ng-model="word.word" required>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error': userForm.definition.$invalid }">
+     Tibetan Definition:  <input type="text" class="form-control" name="definition" ng-model="word.definition" required>
+  </div>
+    <div class="form-group" ng-class="{ 'has-error': userForm.english_word.$invalid }">
+    English Word: <input type="text" class="form-control" name="english_word" ng-model="word.english_word" required>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error': userForm.english_definition.$invalid }">
+     English Definition:  <input type="text" class="form-control" name="english_definition" ng-model="word.english_definition" required>
+  </div>
+<!--         <button class="btn btn-success" ng-click='createWord()'>Create</button>
+ --> <input type="submit" class="btn btn-success" 
+  ng-disabled="userForm.$invalid">
+</form>

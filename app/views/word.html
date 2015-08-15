@@ -1,0 +1,23 @@
+
+
+
+
+<p><h1>{{word.word}}</h1></p>
+<div class="btn pull-right" >
+ <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(word.id)">
+              {{ word.like }}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            </button>
+   <button type="button" id={{word.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(word.id)">
+              {{ word.dislike }} <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            </button>
+ </div>
+<br>
+
+<p><h3>{{word.english_word}}</h3></p>
+<br><br><br>
+<p>{{word.definition}}</p>
+
+<p>{{word.english_definition}}</p>
+
+
+

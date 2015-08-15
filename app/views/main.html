@@ -1,0 +1,31 @@
+  <div ng-init="count()" class="btn pull-right"><h3>  Total Words: {{countvalue}} </h3></div>
+
+<br>
+<br>
+  <form name="userForm">
+  <div class="form-group" >
+     <label><input placeholder="Type in search word./ འལ་་པ་: " ng-model="searchword" typeahead="word.word as word.word for word in autoGetWord($viewValue)" class="form-control"  typeahead-template-url="views/wordsearch-tpl.html" 
+      typeahead-editable="false" height="48"size="40"></label>    <button class="btn btn-success" ng-click='searchText()'>Search</button>
+
+  </div>
+</form>
+
+    <table class="table table-striped" ng-show="searchEntered">
+    <thead>
+      <tr>
+        <th>Word </th>
+        <th>Definition</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="x in wordlist">
+      <td><a href="#/word/{{x.id}}">{{ x.word }}  / {{x.english_word}} </a></td>
+      <td>{{ x.definition }}  / {{x.english_definition}}<br>
+          <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(x.id)">
+              {{ x.like + 1 }}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            </button>
+          <button type="button" id={{x.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(x.id)">
+              {{ x.dislike }} <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            </button>
+      </td>
+    </tr>
+  </table> 
