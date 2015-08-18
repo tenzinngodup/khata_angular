@@ -21,7 +21,7 @@
       <td><a href="#/word/{{x.id}}">{{ x.word }}  / {{x.english_word}} </a></td>
       <td>{{ x.definition }}  / {{x.english_definition}}<br>
           <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(x.id)">
-              {{ x.like + 1 }}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+              {{ x.like}}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
             </button>
           <button type="button" id={{x.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(x.id)">
               {{ x.dislike }} <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
