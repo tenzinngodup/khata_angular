@@ -18,6 +18,7 @@ angular.module('khataAngularApp')
     $scope.likecount = 0;
      $scope.dislikecount = 0;
 
+
     
     $scope.autoGetWord = function(term) {
         return $http({
@@ -40,6 +41,9 @@ angular.module('khataAngularApp')
         if($scope.searchword == null){
             return false;
         }
+         $scope.$parent.bodyStyle ="{}";
+         console.log($scope.bodyStyle);
+
 
         $http({
             method: 'POST', 

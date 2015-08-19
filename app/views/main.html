@@ -1,7 +1,6 @@
-  <div ng-init="count()" class="btn pull-right"><h3>  Total Words: {{countvalue}} </h3></div>
+  <div ng-class="searchEntered ? 'top-left' : 'centered'">
 
-<br>
-<br>
+<br><br>
   <form name="userForm">
   <div class="form-group" >
      <label><input placeholder="Type in search word./ འལ་་པ་: " ng-model="searchword" typeahead="word.word as word.word for word in autoGetWord($viewValue)" class="form-control"  typeahead-template-url="views/wordsearch-tpl.html" 
@@ -9,6 +8,8 @@
 
   </div>
 </form>
+  <div ng-init="count()" class="btn pull-right"><sup>  Total Words: {{countvalue}} </sup></div>
+
 
     <table class="table table-striped" ng-show="searchEntered">
     <thead>
@@ -29,3 +30,5 @@
       </td>
     </tr>
   </table> 
+
+</div>

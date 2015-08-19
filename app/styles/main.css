@@ -7,7 +7,8 @@
 
 body {
   padding: 0;
-}
+
+
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -69,7 +70,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 1000px;
   }
 
   /* Remove the padding we set earlier */
@@ -88,3 +89,7 @@ body {
     border-bottom: 0;
   }
 }
+
+.navbar-xs { min-height:28px; height: 28px; }
+.navbar-xs .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 28px; }
+.navbar-xs .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 28px; }

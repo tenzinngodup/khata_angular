@@ -35,6 +35,16 @@ angular
         controller: 'WordCtrl',
         controllerAs: 'word'
       })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl',
+        controllerAs: 'contact'
+      })
+      .when('/addWord', {
+        templateUrl: 'views/addword.html',
+        controller: 'AddwordCtrl',
+        controllerAs: 'addWord'
+      })
       .otherwise({
         redirectTo: '/'
       });
