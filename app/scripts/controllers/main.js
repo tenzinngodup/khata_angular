@@ -18,7 +18,6 @@ angular.module('khataAngularApp')
     $scope.likecount = 0;
      $scope.dislikecount = 0;
 
-
     
     $scope.autoGetWord = function(term) {
         return $http({
@@ -38,9 +37,11 @@ angular.module('khataAngularApp')
 
 	$scope.searchText = function() {
 
-        if($scope.searchword == null){
+        if($scope.searchword === null){
+            $scope.noSearchFound= true;
             return false;
         }
+        $scope.noSearchFound= false;
          $scope.$parent.bodyStyle ="{}";
          console.log($scope.bodyStyle);
 
@@ -125,9 +126,5 @@ angular.module('khataAngularApp')
         return false;   
     };
 
-    $scope.myFunct = function(keyEvent) {
-		  if (keyEvent.which === 13)
-		    alert('I am an alert');
-		}
 
   });

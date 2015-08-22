@@ -1,8 +1,37 @@
- <div class="container-full">
+    {{StatusMessage}} <br><br>
 
-       
-        Contact for Khata
-  
-  	<br><br><br><br><br>
+    <div class="alert alert-success" ng-show="alerts.success">
+    <strong>SUCCESS!</strong>
+    <div>{{alerts.message}}</div>
+      </div>
+      <div class="alert alert-danger" ng-show="alerts.failure">
+    <strong>Error!</strong>
+    <div>{{alerts.message}}</div>
+      </div>
+<!-- 
+    Tibetan Word:
+      <input type="text" ng-model="word.word"> <br>
+    Tibetan Definition: 
+      <input type="text" ng-model="word.definition"> <br> 
+     English Word:
+      <input type="text" ng-model="word.english_word" > <br>
+     English Definition: 
+      <input type="text" ng-model="word.english_definition" > <br> 
+      <button class="btn btn-success" ng-click='createWord()'>Create</button>
+    <hr> -->
+   
+<form name="userForm" ng-submit="contactSubmit();" novalidate>
+  <div class="form-group" ng-class="{ 'has-error': userForm.name.$invalid }">
+    Name: <input type="text" class="form-control" name="name" ng-model="contact.name" required>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error': userForm.email_phone.$invalid }">
+     Email/Phone:  <input type="text" class="form-control" name="email_phone" ng-model="contact.email_phone" required>
+  </div>
+    <div class="form-group" ng-class="{ 'has-error': userForm.feedback.$invalid }">
+    Feedback : <input type="text" class="form-control" name="feedback" ng-model="contact.feedback" required>
+  </div>
 
-</div> <!-- /container full -->
+<!--         <button class="btn btn-success" ng-click='createWord()'>Create</button>
+ --> <input type="submit" class="btn btn-success" 
+  ng-disabled="userForm.$invalid">
+</form>
