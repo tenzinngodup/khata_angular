@@ -1,17 +1,34 @@
-  <div ng-class="searchEntered ? 'top-left' : 'centered'">
-
-<br><br>
-  <form name="userForm">
-  <div class="form-group" >
-     <label><input placeholder="Type in search word./ འལ་་པ་: " ng-model="searchword" typeahead="word.word as word.word for word in autoGetWord($viewValue)" class="form-control"  typeahead-template-url="views/wordsearch-tpl.html" 
-      typeahead-editable="false" height="48"size="40"></label>    <button class="btn btn-success" ng-click='searchText()'>Search</button>
-
-  </div>
-</form>
-  <div ng-init="count()" class="btn pull-right"><sup>  Total Words: {{countvalue}} </sup></div>
 
 
-    <table class="table table-striped" ng-show="searchEntered">
+<img  ng-hide="searchEntered" src={{imageLocation}} alt="Mountain View" align="middle" style="width:600px;height:150px; margin-top: 1cm; margin-left: 5cm; ">
+
+
+<div ng-class="searchEntered ? 'top-left' : 'centered'" >
+
+    <br><br>
+
+    <form name="userForm">
+      <div class="form-group" ng-class="searchEntered ? '.searchwrap-centered': 'searchwrap-top-left' " >
+     <label>    
+    <input style="font-size: 18px" placeholder="Type in search word/ འཚོལ་ཞིབ། " ng-model="searchword" typeahead="word.word as word.word for word in autoGetWord($viewValue)" class="form-control"  typeahead-template-url="views/wordsearch-tpl.html" 
+       type="text"   typeahead-editable="true" ng-change="styleChange()" id="searchbox">   
+     </label>    
+             <button class="btn btn-success" id="searchbutton" ng-click='searchText()'>Search</button>
+      </div>
+      </form>
+
+
+<!--     <div class="form-group has-feedback" >
+     <input placeholder="Type in search word/ འཚོལ་ཞིབ་: " ng-model="searchword" typeahead="word.word as word.word for word in autoGetWord($viewValue)" class="form-control"  typeahead-template-url="views/wordsearch-tpl.html" 
+      typeahead-editable="true" ng-change="styleChange()" id="searchbox">
+           <i class="glyphicon glyphicon-search form-control-feedback"></i>
+  </div> -->
+
+
+<!--   <div ng-init="count()" class="btn pull-right"><sup>  Total Words: {{countvalue}} </sup></div>
+ -->
+
+    <table class="table table-striped" ng-show="searchEntered && !noSearchFound ">
     <thead>
       <tr>
         <th>Word </th>
@@ -19,12 +36,19 @@
       </tr>
     </thead>
     <tr ng-repeat="x in wordlist">
-      <td><a href="#/word/{{x.id}}">{{ x.word }}  / {{x.english_word}} </a></td>
+      <td><a href="#/word/{{x.id}}">{{ x.word }}  / {{x.english_word}} </a> 
+      <!-- <input ng-click='speak(x.english_word)' type='button' value='🔊 English' />
+      <mark>English<span class="glyphicon glyphicon-volume-up" ng-click='speak(x.english_word)'  aria-hidden="true"></span></mark> -->
+      <button type="button" class="btn btn-warning btn-xs" ng-click='speak(x.english_word)' >
+           <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> English
+      </button>
+         </td>
       <td>{{ x.definition }}  / {{x.english_definition}}<br>
-          <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(x.id)">
-              {{ x.like}}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+          <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(x.id,$index)" ng-disabled="x.cancelling">
+              {{ x.like}}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
             </button>
-          <button type="button" id={{x.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(x.id)">
+          <button type="button" id={{x.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(x.id,$index)"
+          ng-disabled="x.cancelling">
               {{ x.dislike }} <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
             </button>
       </td>
@@ -32,7 +56,11 @@
     </tr>
   </table> 
         
-  <h3 ng-show="noSearchFound">No search result found :(</h3>
+  <div ng-show="noSearchFound"> <h3>No search result found :(  </h3> <br> 
+    Would you like to add the word? 
+    <a ng-href="#/addWord">Add a Word </a></div>
+</div>
+
 
 
 

@@ -17,14 +17,26 @@ angular.module('khataAngularApp')
 
 
     var data ={ 'id': $routeParams.wordId} ;
-    $http.post('http://khata.co/api/index.php', data).success(function(response){
+    $http.post('http://khata.co/api/find_image.php', data).success(function(response){
 				$scope.word = response[0];
    		});
 
 
-    
+    $scope.cancel = function (){
+        $scope.word.cancelling = true;
+    };
+
+    $scope.speak = function(val){
+              var patt = /[^(]*/.exec(val);
+      responsiveVoice.speak(patt[0]);
+
+    };
 
   $scope.like = function(id) {
+
+
+        $scope.cancel();
+        $scope.word.like = parseInt($scope.word.like) +1;
 
         $http({
             method: 'POST', 
@@ -45,6 +57,9 @@ angular.module('khataAngularApp')
 
 
   $scope.dislike = function(id) {
+
+           $scope.cancel();
+        $scope.word.dislike = parseInt($scope.word.dislike) +1;
 
         $http({
             method: 'POST', 

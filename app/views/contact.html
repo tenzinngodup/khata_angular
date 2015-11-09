@@ -28,10 +28,15 @@
      Email/Phone:  <input type="text" class="form-control" name="email_phone" ng-model="contact.email_phone" required>
   </div>
     <div class="form-group" ng-class="{ 'has-error': userForm.feedback.$invalid }">
-    Feedback : <input type="text" class="form-control" name="feedback" ng-model="contact.feedback" required>
+    Feedback : 
+    <textarea type="text" class="form-control" name="feedback" ng-model="contact.feedback"  rows="3" required></textarea>
   </div>
 
 <!--         <button class="btn btn-success" ng-click='createWord()'>Create</button>
  --> <input type="submit" class="btn btn-success" 
   ng-disabled="userForm.$invalid">
 </form>
+
+
+<br><br>
+Interested in Issues or Future enhancements? <a href="https://trello.com/b/lvXTqpmE/khata-tib-dictionary">Link here</a>

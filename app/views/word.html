@@ -4,20 +4,28 @@
 
 <p><h1>{{word.word}}</h1></p>
 <div class="btn pull-right" >
- <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(word.id)">
+ <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(word.id)" ng-disabled="word.cancelling">
               {{ word.like }}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
             </button>
-   <button type="button" id={{word.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(word.id)">
+   <button type="button" id={{word.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(word.id)" ng-disabled="word.cancelling">
               {{ word.dislike }} <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
             </button>
  </div>
 <br>
 
-<p><h3>{{word.english_word}}</h3></p>
-<br><br><br>
-<p>{{word.definition}}</p>
 
-<p>{{word.english_definition}}</p>
+<p>
+	<h3 style="color:#B40404">{{word.english_word}}</h3> <button type="button" class="btn btn-warning btn-xs" ng-click='speak(word.english_word)' >
+           <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>English
+      </button>
+ </p>
+<br><br><br>
+<p><h3>{{word.definition}}</h3></p>
+
+<p><h3>{{word.english_definition}} </h3></p>
+
+<!-- <img src="http://khata.co/images/{{word.image_location}}" alt="Description"/>
+ -->
 
 
 

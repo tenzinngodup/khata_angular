@@ -2,9 +2,24 @@
 <html ng-app="khataAngularApp" >
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Khata: Crowdsourced Online Tibetan English Dictionary</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Khata/ཁ་བཏགས་: The Crowdsourced Tibetan Dictionary"/>
+    <meta property="og:url" content="http://khata.co"/>
+   <meta property="og:site_name" content="khata"/>
+   <meta property="og:type" content="education"/>
+   <meta property="og:description" content="Khata is a crowdsourced Tibetan Dictionary.
+   Khata is an easy-to-use web/app based resource that allows any user to add words along with their meanings.  Ranking of definitions is ordered by number of user likes/dislikes.  Khata’s success depends largely on collaborative community engagement. " />
+   <meta property="og:image" content="http://khata.co/images/logoKhata.6b0f4672.png" />
+
+   <meta name="twitter:card" content="Khata">
+<meta name="twitter:url" content="http://khata.co">
+<meta name="twitter:title" content="Khata: The Crowdsourced Tibetan Dictionary">
+<meta name="twitter:description" content="Khata is a crowdsourced Tibetan Dictionary.
+   Khata is an easy-to-use web/app based resource that allows any user to add words along with their meanings.  Ranking of definitions is ordered by number of user likes/dislikes.  Khata’s success depends largely on collaborative community engagement.  ">
+<meta name="twitter:image" content="...">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -13,9 +28,15 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 
     <!-- endbuild -->
+    <script type="text/javascript">
+        if (window.screen.width <= 720) {
+        window.location = "http://m.khata.co";
+    }
+    </script>
+
   </head>
   <body ng-controller="BodyCtrl" ng-style="bodyStyle" class="cover-image">
     <!--[if lte IE 8]>
@@ -23,7 +44,13 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+      <p hidden>Online Tibetan English Dictionary</p> 
+       <p hidden>Tibetan-English Dictionary</p>   
+   <p hidden>Tibetan Language</p>    
+    <p hidden>Tibetan Education</p>   
+      <p hidden>Tibet Education</p>    
+
+      <div class="header">
       <div class="navbar-xs navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -35,7 +62,7 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">khata / ཁ་བཏགས་</a>
+            <a class="navbar-brand" href="#/">khata/ ཁ་བཏགས་</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -45,11 +72,13 @@
               <li><a ng-href="#/addWord">Add a Word </a></li>
               <li><a ng-href="#/about">About Us</a></li>
               <li><a ng-href="#/contact">Contact</a></li>
-       </ul>
+              <a href="http://khata.co/tibetandictionary">&nbsp;</a>
+                              </ul>
           </div>
         </div>
       </div>
     </div>
+
 
     <div class="container ">
     <div ng-view="" ></div>
@@ -63,31 +92,34 @@
         <p class="btn pull-right" ><span class="glyphicon glyphicon-heart"></span> from the lobjong team</p>
       </div>
     </div>
-
-
+       
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+      ga('create', 'UA-65312401-1', 'auto');
+      ga('send', 'pageview');
+
     </script>
+
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src='bower_components/jquery/dist/jquery.js'></script>
+    <script src='bower_components/angular/angular.js'></script>
+    <script src='bower_components/bootstrap/dist/js/bootstrap.js'></script>
+    <script src='bower_components/angular-animate/angular-animate.js'></script>
+    <script src='bower_components/angular-cookies/angular-cookies.js'></script>
+    <script src='bower_components/angular-resource/angular-resource.js'></script>
+    <script src='bower_components/angular-route/angular-route.js'></script>
+    <script src='bower_components/angular-sanitize/angular-sanitize.js'></script>
+    <script src='bower_components/angular-touch/angular-touch.js'></script>
+    <script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js'></script>
+    <script src='bower_components/ng-file-upload/ng-file-upload.js'></script>
+    <script src='bower_components/ng-file-upload-shim/ng-file-upload-shim.js'></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -100,5 +132,7 @@
         <script src="scripts/controllers/addword.js"></script>
         <script src="scripts/controllers/body.js"></script>
         <!-- endbuild -->
+        
+        <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 </body>
 </html>

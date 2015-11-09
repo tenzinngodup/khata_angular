@@ -20,16 +20,16 @@
    
 <form name="userForm" ng-submit="createWord();" novalidate>
   <div class="form-group" ng-class="{ 'has-error': userForm.word.$invalid }">
-    Tibetan Word: <input type="text" class="form-control" name="word" ng-model="word.word" required>
+    Tibetan Word: (<a href="https://www.youtube.com/watch?v=q_fSLK2lQwc">Wylie keyboard</a>) <input type="text" class="form-control" name="word" ng-model="word.word" placeholder="བོད་ཡིག་" required>
   </div>
   <div class="form-group" ng-class="{ 'has-error': userForm.definition.$invalid }">
-     Tibetan Definition:  <input type="text" class="form-control" name="definition" ng-model="word.definition" required>
+     Tibetan Definition:(<a href="https://www.youtube.com/watch?v=q_fSLK2lQwc">Wylie keyboard</a>)  <input type="text" class="form-control" name="definition" ng-model="word.definition" placeholder="བོད་ཡིག་"required>
   </div>
     <div class="form-group" ng-class="{ 'has-error': userForm.english_word.$invalid }">
-    English Word: <input type="text" class="form-control" name="english_word" ng-model="word.english_word" required>
+    English Word: <input type="text" class="form-control" name="english_word" placeholder="English" ng-model="word.english_word" required>
   </div>
   <div class="form-group" ng-class="{ 'has-error': userForm.english_definition.$invalid }">
-     English Definition:  <input type="text" class="form-control" name="english_definition" ng-model="word.english_definition" required>
+     English Definition:  <input type="text" class="form-control" name="english_definition" placeholder="English"  ng-model="word.english_definition" required>
   </div>
 <!--         <button class="btn btn-success" ng-click='createWord()'>Create</button>
  --> <input type="submit" class="btn btn-success" 

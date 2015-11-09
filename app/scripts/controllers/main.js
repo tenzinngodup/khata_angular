@@ -18,6 +18,25 @@ angular.module('khataAngularApp')
     $scope.likecount = 0;
      $scope.dislikecount = 0;
 
+     $scope.styleChange = function(){
+        $scope.searchEntered ='top-left';
+    };
+
+    $scope.imageChange= function(){
+        var x = Math.floor((Math.random() * 9) );
+        var imageLocal = [ "images/girl_tibet.jpg", 
+        "images/Potala.jpg" ,
+        "images/tibet-horseman.jpg" ,
+        "images/Tibet_Everest.jpg",
+         "images/scripture.jpg",
+        "images/Compassion.jpg" ,
+        "images/miyul.jpg" ,
+        "images/omani-script.jpg",
+        "images/nyingje.jpg"     ];
+        $scope.imageLocation = imageLocal[x];
+    }
+    $scope.imageChange();
+
     
     $scope.autoGetWord = function(term) {
         return $http({
@@ -43,7 +62,6 @@ angular.module('khataAngularApp')
         }
         $scope.noSearchFound= false;
          $scope.$parent.bodyStyle ="{}";
-         console.log($scope.bodyStyle);
 
 
         $http({
@@ -55,9 +73,10 @@ angular.module('khataAngularApp')
         }).
         success(function(response) {
         	  $scope.searchEntered = true;
+              if(response=="No Result" || response.length == 0){
+                $scope.noSearchFound = true;
+              }
             $scope.wordlist = response ;
-
-            console.log($scope.searchword );
 
         }).
         error(function(response) {
@@ -66,8 +85,15 @@ angular.module('khataAngularApp')
         return false;   
     };
 
+    $scope.cancel = function (index){
+        $scope.wordlist[index].cancelling = true;
+    }
 
-	$scope.like = function(id) {
+
+	$scope.like = function(id,index) {
+
+        $scope.cancel(index);
+        $scope.wordlist[index].like = parseInt($scope.wordlist[index].like) +1;
 
         $http({
             method: 'POST', 
@@ -87,7 +113,11 @@ angular.module('khataAngularApp')
     };
 
 
-	$scope.dislike = function(id) {
+	$scope.dislike = function(id,index) {
+
+         $scope.cancel(index);
+         $scope.wordlist[index].dislike = parseInt($scope.wordlist[index].dislike) +1;
+
 
         $http({
             method: 'POST', 
@@ -125,6 +155,15 @@ angular.module('khataAngularApp')
         });
         return false;   
     };
+
+
+    $scope.speak = function(val){
+
+        var patt = /[^(]*/.exec(val);
+      responsiveVoice.speak(patt[0]);
+
+    };
+
 
 
   });
