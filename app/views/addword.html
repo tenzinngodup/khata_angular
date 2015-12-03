@@ -23,13 +23,13 @@
     Tibetan Word: (<a href="https://www.youtube.com/watch?v=q_fSLK2lQwc">Wylie keyboard</a>) <input type="text" class="form-control" name="word" ng-model="word.word" placeholder="བོད་ཡིག་" required>
   </div>
   <div class="form-group" ng-class="{ 'has-error': userForm.definition.$invalid }">
-     Tibetan Definition:(<a href="https://www.youtube.com/watch?v=q_fSLK2lQwc">Wylie keyboard</a>)  <input type="text" class="form-control" name="definition" ng-model="word.definition" placeholder="བོད་ཡིག་"required>
+     Tibetan Definition:(<a href="https://www.youtube.com/watch?v=q_fSLK2lQwc">Wylie keyboard</a>)  <textarea type="text" rows="2" class="form-control" name="definition" ng-model="word.definition" placeholder="བོད་ཡིག་"required></textarea>
   </div>
     <div class="form-group" ng-class="{ 'has-error': userForm.english_word.$invalid }">
     English Word: <input type="text" class="form-control" name="english_word" placeholder="English" ng-model="word.english_word" required>
   </div>
   <div class="form-group" ng-class="{ 'has-error': userForm.english_definition.$invalid }">
-     English Definition:  <input type="text" class="form-control" name="english_definition" placeholder="English"  ng-model="word.english_definition" required>
+     English Definition:  <textarea type="text" class="form-control" name="english_definition" placeholder="English"  rows="2" ng-model="word.english_definition" required></textarea>
   </div>
 <!--         <button class="btn btn-success" ng-click='createWord()'>Create</button>
  --> <input type="submit" class="btn btn-success" 

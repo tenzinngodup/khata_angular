@@ -164,6 +164,40 @@ angular.module('khataAngularApp')
 
     };
 
+    $scope.init = function(){
+        $http({
+            method: 'GET', 
+            url: 'http://khata.co/api/mostliked10.php',
+            headers: {'Content-Type': 'application/json'},  
+            //cache: $templateCache
+        }).
+        success(function(response) {
+            $scope.mostliked = response;
+         }).
+        error(function(response) {
+        });
+        $http({
+            method: 'GET', 
+            url: 'http://khata.co/api/recent10.php',
+            headers: {'Content-Type': 'application/json'},  
+            //cache: $templateCache
+        }).
+        success(function(response) {
+            $scope.recent = response;
+         }).
+        error(function(response) {
+        });
+
+
+        var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+        if(isFirefox){
+            $scope.browserAlert = true;
+        }
+
+    };
+
+    $scope.init();
+
 
 
   });

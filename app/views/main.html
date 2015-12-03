@@ -1,4 +1,7 @@
 
+<div class="alert alert-danger" ng-show="browserAlert">
+  <strong>Message!</strong> Please Use Chrome, IE or Safari browser.
+</div>
 
 <img  ng-hide="searchEntered" src={{imageLocation}} alt="Mountain View" align="middle" style="width:600px;height:150px; margin-top: 1cm; margin-left: 5cm; ">
 
@@ -27,41 +30,68 @@
 
 <!--   <div ng-init="count()" class="btn pull-right"><sup>  Total Words: {{countvalue}} </sup></div>
  -->
+<div class="row" ng-show="searchEntered && !noSearchFound ">
+  <div class="col-md-8">
+     <table class="table table-striped" >
+        <thead>
+          <tr>
+            <th>Word </th>
+            <th>Definition</th>
+          </tr>
+        </thead>
+        <tr ng-repeat="x in wordlist">
+          <td><a href="#/word/{{x.id}}">{{ x.word }}  / {{x.english_word}} </a> 
+          <!-- <input ng-click='speak(x.english_word)' type='button' value='🔊 English' />
+          <mark>English<span class="glyphicon glyphicon-volume-up" ng-click='speak(x.english_word)'  aria-hidden="true"></span></mark> -->
+          <button type="button" class="btn btn-warning btn-xs" ng-click='speak(x.english_word)' >
+               <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> English
+          </button>
+             </td>
+          <td>{{ x.definition }}  / {{x.english_definition}}<br>
+              <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(x.id,$index)" ng-disabled="x.cancelling">
+                  {{ x.like}}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+                </button>
+              <button type="button" id={{x.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(x.id,$index)"
+              ng-disabled="x.cancelling">
+                  {{ x.dislike }} <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                </button>
+          </td>
+        </tr>
+    </table> 
+  </div>
+    <div class="col-md-4" >
+      <div style="border-style: solid; padding: 4px;">
+      <b>Recently Added </b>
+      <ul class="list-group" >
+          <li class="list-group-item" ng-repeat="x in recent | limitTo:5">
+            <a href="#/word/{{x.id}}">
+              {{x.word}}:{{x.english_word}}
+            </a>    <sub> Created at: <font size="1">{{x.createdAt}}</font></sub>
+          </li>
+        </ul>
+      </div>
+      <br>
+      <div style="border-style: solid; padding: 4px;">
+      <b> Most Liked Words </b>
+      <ul class="list-group" >
+          <li class="list-group-item" ng-repeat="x in mostliked | limitTo:5">
+             <a href="#/word/{{x.id}}">
+                {{x.word}}:{{x.english_word}}
+             </a>
+             <span class="badge">{{x.like}}</span>
+          </li>  
+      </ul>
+    </div>         
+     </div>
 
-    <table class="table table-striped" ng-show="searchEntered && !noSearchFound ">
-    <thead>
-      <tr>
-        <th>Word </th>
-        <th>Definition</th>
-      </tr>
-    </thead>
-    <tr ng-repeat="x in wordlist">
-      <td><a href="#/word/{{x.id}}">{{ x.word }}  / {{x.english_word}} </a> 
-      <!-- <input ng-click='speak(x.english_word)' type='button' value='🔊 English' />
-      <mark>English<span class="glyphicon glyphicon-volume-up" ng-click='speak(x.english_word)'  aria-hidden="true"></span></mark> -->
-      <button type="button" class="btn btn-warning btn-xs" ng-click='speak(x.english_word)' >
-           <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> English
-      </button>
-         </td>
-      <td>{{ x.definition }}  / {{x.english_definition}}<br>
-          <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(x.id,$index)" ng-disabled="x.cancelling">
-              {{ x.like}}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
-            </button>
-          <button type="button" id={{x.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(x.id,$index)"
-          ng-disabled="x.cancelling">
-              {{ x.dislike }} <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-            </button>
-      </td>
 
-    </tr>
-  </table> 
+</div>
+ 
         
   <div ng-show="noSearchFound"> <h3>No search result found :(  </h3> <br> 
     Would you like to add the word? 
-    <a ng-href="#/addWord">Add a Word </a></div>
+    <a ng-href="#/addWord">Add a Word </a>
+  </div>
 </div>
-
-
-
 
 </div>
