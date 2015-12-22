@@ -26,7 +26,6 @@ angular.module('khataAngularApp')
 	    	// $scope.wordlist.push($scope.word);
             $scope.alerts = { "success": true , "message": "Awesome! Your word has been submitted!" };
 
-
 	    });
 
 	  };

@@ -36,6 +36,12 @@ angular
         controller: 'WordCtrl',
         controllerAs: 'word'
       })
+      .when('/grammer', {
+        templateUrl: 'views/grammer.html'
+      })
+      .when('/community', {
+        templateUrl: 'views/community.html'
+      })
       .when('/contact', {
         templateUrl: 'views/contact.html',
         controller: 'ContactCtrl',
@@ -45,6 +51,9 @@ angular
         templateUrl: 'views/addword.html',
         controller: 'AddwordCtrl',
         controllerAs: 'addWord'
+      })
+      .when('/forum', {
+        templateUrl: 'forum/index.php',
       })
       .otherwise({
         redirectTo: '/'

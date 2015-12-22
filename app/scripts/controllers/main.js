@@ -189,10 +189,10 @@ angular.module('khataAngularApp')
         });
 
 
-        var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
-        if(isFirefox){
-            $scope.browserAlert = true;
-        }
+        // var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+        // if(isFirefox){
+        //     $scope.browserAlert = true;
+        // }
 
     };
 
