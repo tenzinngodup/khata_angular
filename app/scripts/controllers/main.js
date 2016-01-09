@@ -34,7 +34,7 @@ angular.module('khataAngularApp')
         "images/omani-script.jpg",
         "images/nyingje.jpg"     ];
         $scope.imageLocation = imageLocal[x];
-    }
+    };
     $scope.imageChange();
 
     
@@ -73,7 +73,7 @@ angular.module('khataAngularApp')
         }).
         success(function(response) {
         	  $scope.searchEntered = true;
-              if(response=="No Result" || response.length == 0){
+              if(response==="No Result" || response.length === 0){
                 $scope.noSearchFound = true;
               }
             $scope.wordlist = response ;
@@ -87,7 +87,7 @@ angular.module('khataAngularApp')
 
     $scope.cancel = function (index){
         $scope.wordlist[index].cancelling = true;
-    }
+    };
 
 
 	$scope.like = function(id,index) {

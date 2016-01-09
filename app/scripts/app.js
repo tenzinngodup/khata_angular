@@ -19,7 +19,7 @@ angular
     'ui.bootstrap',
     'ngFileUpload'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -42,6 +42,12 @@ angular
       .when('/community', {
         templateUrl: 'views/community.html'
       })
+      .when('/names', {
+        templateUrl: 'views/names.html'
+      })
+       .when('/colloquial', {
+        templateUrl: 'views/colloquial.html'
+      })
       .when('/contact', {
         templateUrl: 'views/contact.html',
         controller: 'ContactCtrl',
@@ -55,7 +61,18 @@ angular
       .when('/forum', {
         templateUrl: 'forum/index.php',
       })
+      .when('/copyright', {
+        templateUrl: 'views/copyright.html',
+      })
+      .when('/honorific', {
+        templateUrl: 'views/honorific.html',
+        controller: 'HonorificCtrl',
+        controllerAs: 'honorific'
+      })
       .otherwise({
         redirectTo: '/'
       });
+
+      // $locationProvider.hashPrefix('!');
+
   });
