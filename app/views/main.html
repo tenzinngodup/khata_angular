@@ -1,7 +1,4 @@
 <!-- 
-<div class="alert alert-danger" ng-show="browserAlert">
-  <strong>Message!</strong> Please Use Chrome, IE or Safari browser.
-</div> -->
 
 <img  ng-hide="searchEntered" src={{imageLocation}} alt="Mountain View" align="middle" style="width:600px;height:150px; margin-top: 1cm; margin-left: 5cm; "><br><br>
 
@@ -28,19 +25,13 @@
         </div>
       </div>
 
-      </form>
-
-
-<!--     <div class="form-group has-feedback" >
-     <input placeholder="Type in search word/ འཚོལ་ཞིབ་: " ng-model="searchword" typeahead="word.word as word.word for word in autoGetWord($viewValue)" class="form-control"  typeahead-template-url="views/wordsearch-tpl.html" 
-      typeahead-editable="true" ng-change="styleChange()" id="searchbox">
-           <i class="glyphicon glyphicon-search form-control-feedback"></i>
-  </div> -->
+      </form> -->
 
 
 <!--   <div ng-init="count()" class="btn pull-right"><sup>  Total Words: {{countvalue}} </sup></div>
  -->
-<div class="row" ng-show="searchEntered && !noSearchFound ">
+
+<!-- <div class="row" ng-show="searchEntered && !noSearchFound ">
   <div class="col-md-8">
      <table class="table table-striped" >
         <thead>
@@ -102,4 +93,89 @@
   </div>
 </div>
 
-</div>
+</div> -->
+
+<!-- word.word as word.word for word in autoGetWord($viewValue)
+ -->
+<form name="userForm" autocomplete="off">
+      <div class="form-group" ng-class="searchEntered ? '.searchwrap-centered': 'searchwrap-top-left' " >
+     <label>    
+    <input style="font-size: 18px" placeholder="Type in search word/ འཚོལ་ཞིབ། " ng-model="searchword" typeahead="word.english_word for word in autoGetWord($viewValue)" class="form-control"  typeahead-template-url="views/wordsearch-tpl.html" 
+       type="text"   typeahead-editable="true" ng-change="styleChange()" id="searchbox">   
+     </label>    
+             <button class="btn btn-success" id="searchbutton" ng-click='searchText()'>Search</button>
+
+
+      </div>
+
+
+      </form> 
+
+  <div class="row" >
+
+ <div class="col-md-8">
+     <table class="table table-striped" >
+        <thead>
+          <tr>
+            <th>Word </th>
+            <th>Definition</th>
+          </tr>
+        </thead>
+        <tr ng-repeat="x in words">
+          <td><a href="#/word/{{x.id}}">{{ x.word }}  / {{x.english_word}} </a> 
+          <!-- <input ng-click='speak(x.english_word)' type='button' value='🔊 English' />
+          <mark>English<span class="glyphicon glyphicon-volume-up" ng-click='speak(x.english_word)'  aria-hidden="true"></span></mark> -->
+          <button type="button" class="btn btn-warning btn-xs" ng-click='speak(x.english_word)' >
+               <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> English
+          </button>
+             </td>
+          <td>{{ x.definition }}  / {{x.english_definition}}<br>
+              <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(x.id,$index)" ng-disabled="x.cancelling">
+                  {{ x.like}}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+                </button>
+              <button type="button" id={{x.id}}  class="btn btn-default" aria-label="Left Align" ng-click="dislike(x.id,$index)"
+              ng-disabled="x.cancelling">
+                  {{ x.dislike }} <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                </button>
+          </td>
+        </tr>
+    </table> 
+        <button type="button" class="btn btn-primary pull-right" ng-click="refresh()" >Next </button>
+   </div>
+
+     <div class="col-md-4" >
+      <div style="border-style: solid; padding: 4px;">
+      <b>Recently Added </b>
+      <ul class="list-group" >
+          <li class="list-group-item" ng-repeat="x in recent | limitTo:5">
+            <a href="#/word/{{x.id}}">
+              {{x.word}}:{{x.english_word}}
+            </a>    <sub> Created at: <font size="1">{{x.createdAt}}</font></sub>
+          </li>
+        </ul>
+      </div>
+      <br>
+      <div style="border-style: solid; padding: 4px;">
+      <b> Most Liked Words </b>
+      <ul class="list-group" >
+          <li class="list-group-item" ng-repeat="x in mostliked | limitTo:5">
+             <a href="#/word/{{x.id}}">
+                {{x.word}}:{{x.english_word}}
+             </a>
+             <span class="badge">{{x.like}}</span>
+          </li>  
+      </ul>
+    </div>         
+     </div>
+
+    </div>
+
+
+      <div  >        
+        <a ng-href="https://www.facebook.com/khata01/"><i class="fa fa-facebook-official fa-4x"></i></a>
+        <div class="btn pull-right">
+        <a href="https://itunes.apple.com/us/app/id1063167800"><img  src="images/app-store-badge.png" alt="Mountain View" align="middle" height="42" width="110"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.ionicframework.newversionkhata432445&hl=en"><img  src="images/googleplay-app-store.png" alt="Mountain View" align="middle" height="42" width="110">
+        </a>
+        </div>
+      </div>

@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'ngFileUpload'
+    'ngFileUpload',
+    'angular-loading-bar'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

@@ -76,7 +76,9 @@ angular.module('khataAngularApp')
               if(response==="No Result" || response.length === 0){
                 $scope.noSearchFound = true;
               }
-            $scope.wordlist = response ;
+            // $scope.wordlist = response ;
+            $scope.words = response ;
+
 
         }).
         error(function(response) {
@@ -144,6 +146,12 @@ angular.module('khataAngularApp')
 
     };
 
+        $scope.refresh = function(){
+       CommonService.getExplore().then(function(response){
+                $scope.words = response.data;
+          });
+    };
+
     $scope.init = function(){
 
         CommonService.getMostliked10().success(function(response){
@@ -157,6 +165,9 @@ angular.module('khataAngularApp')
           }).error(function(response) {
             $scope.codeStatus = response || "Request failed";
         });
+        CommonService.getExplore().then(function(response){
+                $scope.words = response.data;
+          });
 
 
         // var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
@@ -165,6 +176,8 @@ angular.module('khataAngularApp')
         // }
 
     };
+
+
 
     $scope.init();
 
