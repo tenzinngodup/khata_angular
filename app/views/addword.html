@@ -6,31 +6,45 @@
     <strong>SUCCESS!</strong>
     <div>{{alerts.message}}</div>
       </div>
-<!-- 
-    Tibetan Word:
-      <input type="text" ng-model="word.word"> <br>
-    Tibetan Definition: 
-      <input type="text" ng-model="word.definition"> <br> 
-     English Word:
-      <input type="text" ng-model="word.english_word" > <br>
-     English Definition: 
-      <input type="text" ng-model="word.english_definition" > <br> 
-      <button class="btn btn-success" ng-click='createWord()'>Create</button>
-    <hr> -->
    
 <form name="userForm" ng-submit="createWord();" novalidate>
-  <div class="form-group" ng-class="{ 'has-error': userForm.word.$invalid }">
+  <div class="form-group" >
     Tibetan Word: (<a href="https://www.youtube.com/watch?v=q_fSLK2lQwc">Wylie keyboard</a>) <input type="text" class="form-control" name="word" ng-model="word.word" placeholder="བོད་ཡིག་" required>
+    <span style="color:red" ng-show="userForm.word.$invalid">
+    <span ng-show="userForm.word.$error.required">Word is required.</span>
+    </span>
   </div>
   <div class="form-group" >
-     Tibetan Definition:(<a href="https://www.youtube.com/watch?v=q_fSLK2lQwc">Wylie keyboard</a>)  <textarea type="text" rows="2" class="form-control" name="definition" ng-model="word.definition" placeholder="བོད་ཡིག་"required></textarea>
+     Tibetan Definition:(<a href="https://www.youtube.com/watch?v=q_fSLK2lQwc">Wylie keyboard</a>)  <textarea type="text" rows="2" class="form-control" name="definition" ng-model="word.definition" placeholder="བོད་ཡིག་གོ་དོན་"></textarea>
   </div>
-    <div class="form-group" ng-class="{ 'has-error': userForm.english_word.$invalid }">
-    English Word: <input type="text" class="form-control" name="english_word" placeholder="English" ng-model="word.english_word" required>
+    <div class="form-group" >
+    English Word: Pronounciation in parenthesis is recommended.<input type="text" class="form-control" name="english_word" placeholder="English" ng-model="word.english_word" required>
+  <span style="color:red" ng-show="userForm.english_word.$invalid">
+    <span ng-show="userForm.english_word.$error.required">English Word is required.</span>
+    </span>
   </div>
   <div class="form-group" >
-     English Definition:  <textarea type="text" class="form-control" name="english_definition" placeholder="English"  rows="2" ng-model="word.english_definition" required></textarea>
+     English Definition:  <textarea type="text" class="form-control" name="english_definition" placeholder="English Definition"  rows="2" ng-model="word.english_definition" ></textarea>
   </div>
 <!--         <button class="btn btn-success" ng-click='createWord()'>Create</button>
- --> <input type="submit" class="btn btn-success" >
+ --> <input type="submit" class="btn btn-success" ng-disabled="userForm.word.$invalid || userForm.english_word.$invalid" >
 </form>
+
+
+<br><br>
+
+<p><b> <a name="Win7">How To Install Tibetan Language in Windows 8</a><br>
+   
+  <video width="700" height="400" controls>
+    <source src="http://res2.windows.microsoft.com/resbox/en/windows/main/7cdc40b9-94e5-43b8-a9c2-b65f6a2d1526_7.ogv" type="video/ogg">
+  Your browser does not support the video tag.
+  </video><br>
+  To get Tibetan Keyboard: Choose Tibetan(PRC) Keyboard from the List. 
+
+&nbsp;</p>
+
+<p><b> <a name="Win7">How To Install Tibetan Language in Mac </a><br>
+
+  <iframe width="700" height="400" src="https://www.youtube.com/embed/q_fSLK2lQwc" frameborder="0" allowfullscreen></iframe>
+
+&nbsp;</p>
