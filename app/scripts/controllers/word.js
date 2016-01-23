@@ -8,7 +8,7 @@
  * Controller of the khataAngularApp
  */
 angular.module('khataAngularApp')
-  .controller('WordCtrl', function ($routeParams,$scope,$http) {
+  .controller('WordCtrl', function ($routeParams,$scope,$http,API) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -17,7 +17,7 @@ angular.module('khataAngularApp')
 
 
     var data ={ 'id': $routeParams.wordId} ;
-    $http.post('http://khata.co/api/find_image.php', data).success(function(response){
+    $http.post(API+'find_image.php', data).success(function(response){
 				$scope.word = response[0];
    		});
 
@@ -40,7 +40,7 @@ angular.module('khataAngularApp')
 
         $http({
             method: 'POST', 
-            url: 'http://khata.co/api/like.php',
+            url: API+'like.php',
             headers: {'Content-Type': 'application/json'},  
             data: { 'id' : id }
             //cache: $templateCache
@@ -63,7 +63,7 @@ angular.module('khataAngularApp')
 
         $http({
             method: 'POST', 
-            url: 'http://khata.co/api/dislike.php',
+            url: API+'dislike.php',
             headers: {'Content-Type': 'application/json'},  
             data: { 'id' : id }
             //cache: $templateCache

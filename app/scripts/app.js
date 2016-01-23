@@ -69,6 +69,11 @@ angular
         controller: 'HonorificCtrl',
         controllerAs: 'honorific'
       })
+      .when('/explore', {
+        templateUrl: 'views/explore.html',
+        controller: 'ExploreCtrl',
+        controllerAs: 'explore'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -76,3 +81,6 @@ angular
       // $locationProvider.hashPrefix('!');
 
   });
+
+angular.module('khataAngularApp').constant('API', "http://khata.co/api/");
+

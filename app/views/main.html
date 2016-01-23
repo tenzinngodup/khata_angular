@@ -8,8 +8,6 @@
 
 <div ng-class="searchEntered ? 'top-left' : 'centered'" >
 
-    <br><br>
-
     <form name="userForm">
       <div class="form-group" ng-class="searchEntered ? '.searchwrap-centered': 'searchwrap-top-left' " >
      <label>    
@@ -53,8 +51,6 @@
         </thead>
         <tr ng-repeat="x in wordlist">
           <td><a href="#/word/{{x.id}}">{{ x.word }}  / {{x.english_word}} </a> 
-          <!-- <input ng-click='speak(x.english_word)' type='button' value='🔊 English' />
-          <mark>English<span class="glyphicon glyphicon-volume-up" ng-click='speak(x.english_word)'  aria-hidden="true"></span></mark> -->
           <button type="button" class="btn btn-warning btn-xs" ng-click='speak(x.english_word)' >
                <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> English
           </button>

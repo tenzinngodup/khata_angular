@@ -8,7 +8,7 @@
  * Controller of the khataAngularApp
  */
 angular.module('khataAngularApp')
-  .controller('MainCtrl', function ($scope,$http) {
+  .controller('MainCtrl', function ($scope,$http,API,CommonService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -41,7 +41,7 @@ angular.module('khataAngularApp')
     $scope.autoGetWord = function(term) {
         return $http({
             method: 'POST', 
-            url: 'http://khata.co/api/find.php',
+            url: API+'find.php',
             headers: {'Content-Type': 'application/json'},  
             data: { 'text' : term}
         }).
@@ -66,7 +66,7 @@ angular.module('khataAngularApp')
 
         $http({
             method: 'POST', 
-            url: 'http://khata.co/api/find.php',
+            url: API+'find.php',
             headers: {'Content-Type': 'application/json'},  
             data: { 'text' : $scope.searchword }
             //cache: $templateCache
@@ -95,18 +95,9 @@ angular.module('khataAngularApp')
         $scope.cancel(index);
         $scope.wordlist[index].like = parseInt($scope.wordlist[index].like) +1;
 
-        $http({
-            method: 'POST', 
-            url: 'http://khata.co/api/like.php',
-            headers: {'Content-Type': 'application/json'},  
-            data: { 'id' : id }
-            //cache: $templateCache
-        }).
-        success(function(response) {
-             console.log( response);
-
-        }).
-        error(function(response) {
+        CommonService.postLike(id).success(function(response){
+                //$scope.words = response.data;
+          }).error(function(response) {
             $scope.codeStatus = response || "Request failed";
         });
         return false;   
@@ -118,20 +109,9 @@ angular.module('khataAngularApp')
          $scope.cancel(index);
          $scope.wordlist[index].dislike = parseInt($scope.wordlist[index].dislike) +1;
 
-
-        $http({
-            method: 'POST', 
-            url: 'http://khata.co/api/dislike.php',
-            headers: {'Content-Type': 'application/json'},  
-            data: { 'id' : id }
-            //cache: $templateCache
-        }).
-        success(function(response) {
-             console.log( response);
-
-
-        }).
-        error(function(response) {
+        CommonService.postDislike(id).success(function(response){
+                //$scope.words = response.data;
+          }).error(function(response) {
             $scope.codeStatus = response || "Request failed";
         });
         return false;   
@@ -141,7 +121,7 @@ angular.module('khataAngularApp')
 
         $http({
             method: 'GET', 
-            url: 'http://khata.co/api/count.php',
+            url: API+'count.php',
             headers: {'Content-Type': 'application/json'},  
             //cache: $templateCache
         }).
@@ -165,27 +145,17 @@ angular.module('khataAngularApp')
     };
 
     $scope.init = function(){
-        $http({
-            method: 'GET', 
-            url: 'http://khata.co/api/mostliked10.php',
-            headers: {'Content-Type': 'application/json'},  
-            //cache: $templateCache
-        }).
-        success(function(response) {
-            $scope.mostliked = response;
-         }).
-        error(function(response) {
+
+        CommonService.getMostliked10().success(function(response){
+                $scope.mostliked = response;
+          }).error(function(response) {
+            $scope.codeStatus = response || "Request failed";
         });
-        $http({
-            method: 'GET', 
-            url: 'http://khata.co/api/recent10.php',
-            headers: {'Content-Type': 'application/json'},  
-            //cache: $templateCache
-        }).
-        success(function(response) {
-            $scope.recent = response;
-         }).
-        error(function(response) {
+
+        CommonService.getRecent10().success(function(response){
+                $scope.recent = response;
+          }).error(function(response) {
+            $scope.codeStatus = response || "Request failed";
         });
 
 

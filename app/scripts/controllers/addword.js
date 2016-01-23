@@ -8,7 +8,7 @@
  * Controller of the khataAngularApp
  */
 angular.module('khataAngularApp')
-  .controller('AddwordCtrl', function ($scope,$http,Upload) {
+  .controller('AddwordCtrl', function ($scope,$http,Upload,API) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
