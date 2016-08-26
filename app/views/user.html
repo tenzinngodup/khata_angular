@@ -1,0 +1,16 @@
+<p>This is the user view.</p>
+
+{{user}}
+
+    <div ng-if="currentUser">Welcome, {{ currentUser.name }}</div>
+<!--     <img ng-src="profileURL" />-->    
+    <img ng-src="http://graph.facebook.com/{{currentUser.userId}}/picture" />
+
+
+        <div ng-if="currentUser">Welcome, {{ currentUser.userDisplayName }}</div>
+      <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>
+      <div ng-switch on="currentUser.role">
+        <div ng-switch-when="userRoles.admin">You're admin.</div>
+        <div ng-switch-when="userRoles.editor">You're editor.</div>
+        <div ng-switch-default>You're something else.</div>
+      </div>

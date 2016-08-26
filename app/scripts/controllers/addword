@@ -34,16 +34,17 @@ angular.module('khataAngularApp')
     var url = "http://localhost:1337/word";
     $http.post(url, {        
           data:$scope.word,
+          access_token:$window.sessionStorage.token,
           headers:{
               'Content-Type': 'application/json',
                 // "Access-Control-Allow-Origin":"*",
             // 'access_token': $window.sessionStorage.token}
-            "Authorization": 'Basic '+ $window.sessionStorage.token}
+            "Authorization": 'Bearer '+ $window.sessionStorage.token}
         }
       ).success(function(response){
         console.log(response);
         $scope.wordlist.push($scope.word);
-        $scope.alerts = { "success": true , "message": "Awesome! Your word has been submitted!" };
+            $scope.alerts = { "success": true , "message": "Awesome! Your word has been submitted!" };
       });
   }
   });

@@ -16,7 +16,8 @@ angular.module('khataAngularApp')
     ];
 
       $scope.totalItems = 64;
-  $scope.currentPage = 4;
+      
+      $scope.currentPage = 4;
 
   	$scope.refresh = function(){
   	   CommonService.getExplore().then(function(response){

@@ -8,12 +8,27 @@
  * Controller of the khataAngularApp
  */
 angular.module('khataAngularApp')
-  .controller('BodyCtrl', function ($scope) {
+  .controller('BodyCtrl', function ($scope,USER_ROLES,AuthService,AUTH_EVENTS,$location) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+      $scope.currentUser = null;
+      $scope.userRoles = USER_ROLES;
+      $scope.isAuthorized = AuthService.isAuthorized;
+      $scope.setCurrentUser = function (user) {
+        $scope.currentUser = user;
+             // $scope.profileURL = "http://graph.facebook.com/"+ $scope.currentUser.userId+"/picture";
+      };
+      $scope.$on(AUTH_EVENTS.notAuthenticated, function(){
+        alert("not notAuthenticated");
+        $location.path('/login'); 
+      });
+      $scope.$on(AUTH_EVENTS.notAuthorized, function(){
+        alert("not notAuthorized");
+        $location.path('/login'); 
+      })
 
   // $scope.image = "images/lakesky.jpg";
 
