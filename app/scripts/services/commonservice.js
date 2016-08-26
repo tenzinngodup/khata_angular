@@ -14,7 +14,7 @@ angular.module('khataAngularApp')
     	getExplore: function(){
 	    		return $http({
 	            method: 'GET', 
-	            url: API+"explore.php",
+	            url: API+"word?limit=10",
 	            headers: {'Content-Type': 'application/json'},  
 	            //cache: $templateCache
 	        }).
@@ -29,7 +29,7 @@ angular.module('khataAngularApp')
 		getMostliked10: function(){
 	    		return $http({
 	            method: 'GET', 
-	            url: API+"mostliked10.php",
+	            url: API+"word?sort=like DESC&limit=10",
 	            headers: {'Content-Type': 'application/json'},  
 	            //cache: $templateCache
 	        }).
@@ -44,7 +44,7 @@ angular.module('khataAngularApp')
 		getRecent10: function(){
 	    		return $http({
 	            method: 'GET', 
-	            url: API+"recent10.php",
+	            url: API+"word?sort=createdAt DESC&limit=10",
 	            headers: {'Content-Type': 'application/json'},  
 	            //cache: $templateCache
 	        }).

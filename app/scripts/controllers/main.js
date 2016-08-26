@@ -38,19 +38,19 @@ angular.module('khataAngularApp')
     $scope.imageChange();
 
     
-    $scope.autoGetWord = function(term) {
-        return $http({
-            method: 'POST', 
-            url: API+'find.php',
-            headers: {'Content-Type': 'application/json'},  
-            data: { 'text' : term}
-        }).
-        then(function(response) {
-             return response.data ;
-        });
+    // $scope.autoGetWord = function(term) {
+    //     return $http({
+    //         method: 'POST', 
+    //         url: API+'word',
+    //         headers: {'Content-Type': 'application/json'},  
+    //         data: { 'text' : term}
+    //     }).
+    //     then(function(response) {
+    //          return response.data ;
+    //     });
 
 
-    };
+    // };
 
 	  $scope.searchEntered = false;
 
@@ -64,12 +64,16 @@ angular.module('khataAngularApp')
          $scope.$parent.bodyStyle ="{}";
 
 
+        // $http({
+        //     method: 'POST', 
+        //     url: API+'find.php',
+        //     headers: {'Content-Type': 'application/json'},  
+        //     data: { 'text' : $scope.searchword }
+        //     //cache: $templateCache
+        // }).
         $http({
-            method: 'POST', 
-            url: API+'find.php',
-            headers: {'Content-Type': 'application/json'},  
-            data: { 'text' : $scope.searchword }
-            //cache: $templateCache
+            method: 'GET', 
+            url: API+'word?where={word:{contains:'+ $scope.searchword + '}}'
         }).
         success(function(response) {
         	  $scope.searchEntered = true;

@@ -20,30 +20,31 @@ angular.module('khataAngularApp')
 
 
    // $scope.createWord = function() {
-	  // 	var data = $scope.word;
-	  //  // $scope.greeting = 'Hello ' + $scope.username + '!';
-	  //   $http.post(API+'create.php', data).success(function(){
-	  //   	// $scope.wordlist.push($scope.word);
+    //  var data = $scope.word;
+    //  // $scope.greeting = 'Hello ' + $scope.username + '!';
+    //   $http.post(API+'create.php', data).success(function(){
+    //    // $scope.wordlist.push($scope.word);
    //          $scope.alerts = { "success": true , "message": "Awesome! Your word has been submitted!" };
 
-	  //   });
+    //   });
 
-	  // };
+    // };
 
     $scope.createWord = function(){
     var url = "http://localhost:1337/word";
     $http.post(url, {        
           data:$scope.word,
+          access_token:$window.sessionStorage.token,
           headers:{
               'Content-Type': 'application/json',
                 // "Access-Control-Allow-Origin":"*",
             // 'access_token': $window.sessionStorage.token}
-            "Authorization": 'Basic '+ $window.sessionStorage.token}
+            "Authorization": 'Bearer '+ $window.sessionStorage.token}
         }
       ).success(function(response){
         console.log(response);
         $scope.wordlist.push($scope.word);
-        $scope.alerts = { "success": true , "message": "Awesome! Your word has been submitted!" };
+            $scope.alerts = { "success": true , "message": "Awesome! Your word has been submitted!" };
       });
   }
   });

@@ -16,10 +16,15 @@ angular.module('khataAngularApp')
     ];
 
 
+    // var data ={ 'id': $routeParams.wordId} ;
+    // $http.post(API+'find_image.php', data).success(function(response){
+				// $scope.word = response[0];
+   	// 	});
     var data ={ 'id': $routeParams.wordId} ;
-    $http.post(API+'find_image.php', data).success(function(response){
-				$scope.word = response[0];
-   		});
+    $http.get(API+ 'word/'+ $routeParams.wordId).success(function(response){
+        $scope.word = response;
+      });
+
 
 
     $scope.cancel = function (){

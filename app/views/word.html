@@ -3,6 +3,9 @@
 
 
 <p><h1>{{word.word}}</h1></p>
+            Author:{{word.author.displayName}} <img ng-src="http://graph.facebook.com/{{word.author.facebookId}}/picture" /><br>
+            Created On:{{word.createdAt}} <br>
+            Updated On:{{word.updatedAt}}  <br>
 <div class="btn pull-right" >
  <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(word.id)" ng-disabled="word.cancelling">
               {{ word.like }}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>

@@ -53,7 +53,9 @@
           <td><a href="#/word/{{x.id}}">{{ x.word }}  / {{x.english_word}} </a> 
           <button type="button" class="btn btn-warning btn-xs" ng-click='speak(x.english_word)' >
                <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> English
-          </button>
+          </button><br>
+            Author:{{x.author.displayName}} <img ng-src="http://graph.facebook.com/{{x.author.facebookId}}/picture" />
+
              </td>
           <td>{{ x.definition }}  / {{x.english_definition}}<br>
               <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(x.id,$index)" ng-disabled="x.cancelling">

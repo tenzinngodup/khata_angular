@@ -8,7 +8,7 @@
  * Controller of the khataAngularApp
  */
 angular.module('khataAngularApp')
-  .controller('BodyCtrl', function ($scope,USER_ROLES,AuthService,AUTH_EVENTS,$location) {
+  .controller('BodyCtrl', function ($scope,USER_ROLES,AuthService,AUTH_EVENTS,$location,$rootScope,$window) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -29,6 +29,15 @@ angular.module('khataAngularApp')
         alert("not notAuthorized");
         $location.path('/login'); 
       })
+
+      $scope.isAuthenticated = function(){
+        return AuthService.isAuthenticated();
+      };
+      $scope.logout = function(){
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+        $window.location.reload();
+
+      };
 
   // $scope.image = "images/lakesky.jpg";
 

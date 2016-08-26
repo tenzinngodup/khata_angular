@@ -139,7 +139,7 @@ angular
   });
 });
 
-angular.module('khataAngularApp').constant('API', "http://khata.co/api/")
+angular.module('khataAngularApp').constant('API', "http://localhost:1337/")
 .constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',
   loginFailed: 'auth-login-failed',

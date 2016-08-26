@@ -1,6 +1,4 @@
-<p>This is the user view.</p>
 
-{{user}}
 
     <div ng-if="currentUser">Welcome, {{ currentUser.name }}</div>
 <!--     <img ng-src="profileURL" />-->    
@@ -14,3 +12,6 @@
         <div ng-switch-when="userRoles.editor">You're editor.</div>
         <div ng-switch-default>You're something else.</div>
       </div>
+
+
+      <h2> Words Contributed: {{totalWord}} </h2> 

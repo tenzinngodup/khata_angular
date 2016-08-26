@@ -15,9 +15,12 @@
           <mark>English<span class="glyphicon glyphicon-volume-up" ng-click='speak(x.english_word)'  aria-hidden="true"></span></mark> -->
           <button type="button" class="btn btn-warning btn-xs" ng-click='speak(x.english_word)' >
                <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> English
-          </button>
+          </button><br>
+          Author:{{x.author.displayName}} <img ng-src="http://graph.facebook.com/{{x.author.facebookId}}/picture" />
+
              </td>
           <td>{{ x.definition }}  / {{x.english_definition}}<br>
+
               <button type="button" id={{x.id}} class="btn btn-default" aria-label="Left Align" ng-click="like(x.id,$index)" ng-disabled="x.cancelling">
                   {{ x.like}}  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
                 </button>

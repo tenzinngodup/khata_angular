@@ -74,11 +74,16 @@
               <li class="active" ><a href="#/"><img src="images/logoKhata_header.png" height="25"> khata/ ཁ་བཏགས་ </a></li>
               <li><a ng-href="#/addWord">Add a Word </a></li>
               <li><a ng-href="#/grammer">Grammar</a></li>
-              <li><a ng-href="#/explore">Explore</a></li>
-              <li><a ng-href="http://forum.khata.co">Community</a></li>
-              <li><a ng-href="#/colloquial">Colloquial Tibetan</a></li>
+
               <li><a ng-href="#/contact">Contact</a></li>
-              <li><a ng-href="#/login">Login</a></li>
+              <li ng-if="!isAuthenticated()" ><a ng-href="#/login">Login</a></li>
+              <li ng-if="isAuthenticated()" ><a ng-click="logout()">Logout</a></li>
+               <li><a ng-href="#/user">
+                <div ng-if="isAuthenticated()" style="color: white;" >{{ currentUser.userDisplayName }}</div>
+              </a>
+<!--                 <img ng-src="http://graph.facebook.com/{{currentUser.facebookId}}/picture" />
+ -->              </li>
+         
 
               <li class="dropdown">
                 <a href="#/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
@@ -86,6 +91,9 @@
                    <li><a ng-href="#/about">About Us</a></li>
                    <li><a ng-href="#/names">Common Tibetan Names</a></li>
                    <li><a ng-href="#/honorific">Honorific Tibetan Terms</a></li>
+                   <li><a ng-href="#/explore">Explore</a></li>
+                   <li><a ng-href="http://forum.khata.co">Community</a></li>
+                  <li><a ng-href="#/colloquial">Colloquial Tibetan</a></li>
 
                 </ul>
               </li>

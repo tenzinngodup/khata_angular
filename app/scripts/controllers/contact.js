@@ -22,7 +22,7 @@ angular.module('khataAngularApp')
    $scope.contactSubmit = function() {
 	  	var data = $scope.contact;
 	   // $scope.greeting = 'Hello ' + $scope.username + '!';
-	    $http.post(API+'contact.php', data).success(function(){
+	    $http.post('http://khata.co/api/contact.php', data).success(function(){
 	    	// $scope.wordlist.push($scope.word);
             $scope.alerts = { "success": true , "message": "Awesome! Your feedback has been submitted!" };
 
