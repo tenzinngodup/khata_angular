@@ -83,14 +83,13 @@ angular
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
-        controllerAs: 'login',
-
+        controllerAs: 'login'
       })
       .when('/user', {
         templateUrl: 'views/user.html',
         controller: 'UserCtrl',
         controllerAs: 'user',
-            data: {
+        data: {
           authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         }
       })
@@ -125,21 +124,24 @@ angular
 })
 .run(function ($rootScope, AUTH_EVENTS, AuthService) {
   $rootScope.$on('$routeChangeStart', function (event, next) {
-    var authorizedRoles = next.data.authorizedRoles;
-    if (!AuthService.isAuthorized(authorizedRoles)) {
-      event.preventDefault();
-      if (AuthService.isAuthenticated()) {
-        // user is not allowed
-        $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-      } else {
-        // user is not logged in
-        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-      }
+    if(typeof next.data != "undefined"){
+       var authorizedRoles = next.data.authorizedRoles;
+        if (!AuthService.isAuthorized(authorizedRoles)) {
+          event.preventDefault();
+          if (AuthService.isAuthenticated()) {
+            // user is not allowed
+            $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+          } else {
+            // user is not logged in
+            $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+          }
+        }
     }
+
   });
 });
 
-angular.module('khataAngularApp').constant('API', "http://localhost:1337/")
+angular.module('khataAngularApp').constant('API', "http://khata-facebook-token-tenzinngodup.c9users.io:8080/")
 .constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',
   loginFailed: 'auth-login-failed',
@@ -153,5 +155,9 @@ angular.module('khataAngularApp').constant('API', "http://localhost:1337/")
   admin: 'admin',
   editor: 'editor',
   guest: 'guest'
+})
+.constant('ALERT_STATUS', {
+  authLogin: 'auth-login-alert',
+  addWord: 'add-word-alert'
 });
 

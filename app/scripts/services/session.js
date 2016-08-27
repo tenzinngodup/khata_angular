@@ -21,6 +21,7 @@ angular.module('khataAngularApp')
     this.id = null;
     this.userId = null;
     this.userRole = null;
+    this.facebookId = null;
     this.userDisplayName = null;
 
   };

@@ -87,6 +87,19 @@ angular.module('khataAngularApp')
 	        error(function(error) {
 	        	return error;
 	        });
+		},
+		getUserId: function(id){
+	    	return $http({
+	            method: 'GET', 
+	            url:  API + 'user?facebookId='+id,
+	            //cache: $templateCache
+	        }).
+	        success(function(response) {
+	            return response;	            
+	         }).
+	        error(function(error) {
+	        	return error;
+	        });
 		}
 
 
