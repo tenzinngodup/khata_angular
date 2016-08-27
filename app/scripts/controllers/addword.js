@@ -8,7 +8,7 @@
  * Controller of the khataAngularApp
  */
 angular.module('khataAngularApp')
-  .controller('AddwordCtrl', function ($scope,$http,Upload,API,$window) {
+  .controller('AddwordCtrl', function ($scope,$http,Upload,API,$window,$rootScope,CommonService,ALERT_STATUS) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -30,8 +30,13 @@ angular.module('khataAngularApp')
 
     // };
 
+   CommonService.getUserId($scope.currentUser.userId).then(function(response){
+          $scope.author = response.data[0].id;
+      });
+
     $scope.createWord = function(){
-    var url = "http://localhost:1337/word";
+    var url = API + "word";
+    $scope.word.author = $scope.author;
     $http.post(url, {        
           data:$scope.word,
           access_token:$window.sessionStorage.token,
@@ -43,8 +48,10 @@ angular.module('khataAngularApp')
         }
       ).success(function(response){
         console.log(response);
-        $scope.wordlist.push($scope.word);
-            $scope.alerts = { "success": true , "message": "Awesome! Your word has been submitted!" };
+          $rootScope.$broadcast(ALERT_STATUS.addWord);
+        $scope.word.word = null;
+        $scope.word.english_word = null; 
+            // $scope.alerts = { "success": true , "message": "Awesome! Your word has been submitted!" };
       });
   }
   });

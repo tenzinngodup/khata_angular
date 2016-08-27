@@ -1,17 +1,37 @@
-
-
-    <div ng-if="currentUser">Welcome, {{ currentUser.name }}</div>
-<!--     <img ng-src="profileURL" />-->    
-    <img ng-src="http://graph.facebook.com/{{currentUser.userId}}/picture" />
-
-
-        <div ng-if="currentUser">Welcome, {{ currentUser.userDisplayName }}</div>
-      <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>
+   <div class="jumbotron">
+<div class="row">
+  <div class="col-md-3 col-md-offset-9">
+    
+    <div ng-if="currentUser">Welcome, {{ currentUser.userDisplayName }}</div>
+    <img ng-src="http://graph.facebook.com/{{currentUser.userId}}/picture?type=large" class="img-thumbnail"/>
+     <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>
       <div ng-switch on="currentUser.role">
         <div ng-switch-when="userRoles.admin">You're admin.</div>
         <div ng-switch-when="userRoles.editor">You're editor.</div>
-        <div ng-switch-default>You're something else.</div>
+        <div ng-switch-default></div>
+      </div>
+  </div>
+  <div class="row">
+  	  <div class="col-md-3 col-md-3">
+            <button type="button" class="btn btn-default btn-success btn-lg">
+		         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Words<br>
+		         <h1>{{totalWord}} </h1>
+			</button>
+      </div>
+      <div class="col-md-3 col-md-3">
+            <button type="button" class="btn btn-default  btn-danger btn-lg">
+		         <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span> Activity<br>
+		         		         <h1>{{totalWord}} </h1>
+			</button>
       </div>
 
 
-      <h2> Words Contributed: {{totalWord}} </h2> 
+  </div>
+
+
+</div>
+
+
+
+
+</div>

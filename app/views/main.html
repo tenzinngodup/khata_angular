@@ -54,7 +54,18 @@
           <button type="button" class="btn btn-warning btn-xs" ng-click='speak(x.english_word)' >
                <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> English
           </button><br>
-            Author:{{x.author.displayName}} <img ng-src="http://graph.facebook.com/{{x.author.facebookId}}/picture" />
+          <div class="media">
+                <div class="media-left">
+                  <a >
+                    <img class="media-object img-thumbnail"  ng-src="http://graph.facebook.com/{{x.author.facebookId}}/picture" />
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading"></h4>
+                  Author:{{x.author.displayName}} 
+                </div>
+              </div>
+         <!--    Author:{{x.author.displayName}} <img ng-src="http://graph.facebook.com/{{x.author.facebookId}}/picture" class="img-thumbnail" /> -->
 
              </td>
           <td>{{ x.definition }}  / {{x.english_definition}}<br>

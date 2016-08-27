@@ -8,7 +8,7 @@
  * Controller of the khataAngularApp
  */
 angular.module('khataAngularApp')
-  .controller('BodyCtrl', function ($scope,USER_ROLES,AuthService,AUTH_EVENTS,$location,$rootScope,$window) {
+  .controller('BodyCtrl', function ($scope,USER_ROLES,AuthService,AUTH_EVENTS,$location,$rootScope,$window,$uibModal, $log,ALERT_STATUS) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -22,13 +22,20 @@ angular.module('khataAngularApp')
              // $scope.profileURL = "http://graph.facebook.com/"+ $scope.currentUser.userId+"/picture";
       };
       $scope.$on(AUTH_EVENTS.notAuthenticated, function(){
-        alert("not notAuthenticated");
+        // alert("not notAuthenticated");
+        $scope.open('lg',"not notAuthenticated","Redirecting to login page." );
         $location.path('/login'); 
       });
       $scope.$on(AUTH_EVENTS.notAuthorized, function(){
-        alert("not notAuthorized");
+        // alert("not notAuthorized");
+       $scope.open('lg',"not notAuthorized","Redirecting to login page." );                
         $location.path('/login'); 
-      })
+      });
+      $scope.$on(ALERT_STATUS.addWord, function(){
+        // alert("not notAuthorized");
+       $scope.open('lg',"Word Added!","" );                
+        // $location.path('/login'); 
+      });
 
       $scope.isAuthenticated = function(){
         return AuthService.isAuthenticated();
@@ -39,6 +46,37 @@ angular.module('khataAngularApp')
 
       };
 
+
+/////////////////////////////////////////////////////////////////////      
+      $scope.items = ['item1', 'item2', 'item3'];
+      $scope.header = "header content";
+      $scope.content = " main body content";
+
+      $scope.animationsEnabled = true;
+      $scope.open = function (size,content,header) {
+          var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            controllerAs: '$ctrl',
+            size: size,
+            resolve: {
+              items: function () {
+                return $scope.items;
+              },
+             header: function () {
+                return header;
+              },
+              content: function () {
+                return content;
+              },
+
+            }
+        });
+      };
+//////////////////////////////////////////////////////////////////
   // $scope.image = "images/lakesky.jpg";
 
   // $scope.bodyStyle = {background: "url(" + $scope.image + ") no-repeat center center fixed",
@@ -50,4 +88,23 @@ angular.module('khataAngularApp')
 
 
   });
+
+angular.module('khataAngularApp').controller('ModalInstanceCtrl', function ($uibModalInstance, items, header,content,$scope) {
+  var $ctrl = this;
+  $ctrl.items = items;
+  $ctrl.selected = {
+    item: $ctrl.items[0]
+  };
+  $scope.content = content; 
+  $scope.header = header; 
+
+  $scope.ok = function () {
+    $uibModalInstance.close($ctrl.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+});
+
 
