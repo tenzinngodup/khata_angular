@@ -142,8 +142,8 @@ angular
   });
 });
 
-// angular.module('khataAngularApp').constant('API', "http://khata-facebook-token-tenzinngodup.c9users.io:8080/")
-angular.module('khataAngularApp').constant('API', "http://localhost:1337/")
+angular.module('khataAngularApp').constant('API', "http://khata-facebook-token-tenzinngodup.c9users.io:8080/")
+// angular.module('khataAngularApp').constant('API', "http://localhost:1337/")
 .constant('AUTH_EVENTS', {
   loginSuccess: 'auth-login-success',
   loginFailed: 'auth-login-failed',
