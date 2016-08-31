@@ -8,7 +8,7 @@
  * Controller of the khataAngularApp
  */
 angular.module('khataAngularApp')
-  .controller('LoginCtrl', function ( $facebook,$scope,$location,$window,$http,AUTH_EVENTS, AuthService,Session,$rootScope) {
+  .controller('LoginCtrl', function ( $facebook,$scope,$location,$window,$http,AUTH_EVENTS, AuthService,Session,$rootScope,$cookies) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -18,6 +18,7 @@ angular.module('khataAngularApp')
     $scope.loginFacebook = function() {
 		  $facebook.login(['email']).then(function(response) {
 			  	$window.sessionStorage.token = response.authResponse.accessToken;
+			  	$cookies.put('khata-fb-token', response.authResponse.accessToken);
 			  	console.log($window.sessionStorage.token );
 			  	 $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
 			    $scope.me();

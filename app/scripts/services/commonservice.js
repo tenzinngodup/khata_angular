@@ -100,6 +100,27 @@ angular.module('khataAngularApp')
 	        error(function(error) {
 	        	return error;
 	        });
+		},
+		getUserInfo: function(token){
+	    	return $http({
+	            method: 'POST', 
+	            data:[],
+	            access_token:token,
+	            url:  API + 'user/token',
+	            headers:{
+	            	'Content-Type': 'application/json',
+	            	"Authorization": 'Bearer '+ token
+
+	            	// access_token:token
+
+	            }
+	        }).
+	        success(function(response) {
+	            return response;	            
+	         }).
+	        error(function(error) {
+	        	return error;
+	        });
 		}
 
 
