@@ -8,7 +8,7 @@
  * Controller of the khataAngularApp
  */
 angular.module('khataAngularApp')
-  .controller('BodyCtrl', function ($scope,USER_ROLES,AuthService,AUTH_EVENTS,$location,$rootScope,$window,$uibModal, $log,ALERT_STATUS) {
+  .controller('BodyCtrl', function ($scope,USER_ROLES,AuthService,AUTH_EVENTS,$location,$rootScope,$window,$uibModal, $log,ALERT_STATUS,$cookies,CommonService,API,$http,Session) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -42,9 +42,30 @@ angular.module('khataAngularApp')
       };
       $scope.logout = function(){
         $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+        $cookies.remove('khata-fb-token');
         $window.location.reload();
 
       };
+
+      if(!angular.isUndefined($cookies.get('khata-fb-token'))){
+         // CommonService.getUserInfo($cookies.get('khata-fb-token')).success(function(response){
+         //  console.log(response);
+         //  alert(response);
+         // });
+
+          $http.post(API + 'user/token', {        
+          data:[],
+          access_token:$cookies.get('khata-fb-token'),
+          headers:{
+              'Content-Type': 'application/json',
+            "Authorization": 'Bearer '+$cookies.get('khata-fb-token')}
+        }
+      ).success(function(response){
+        Session.create($cookies.get('khata-fb-token'), response.facebookId,"editor",response.displayName);
+        $scope.setCurrentUser(Session);
+      });
+
+      }
 
 
 /////////////////////////////////////////////////////////////////////      
