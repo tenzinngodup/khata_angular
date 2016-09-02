@@ -30,6 +30,19 @@ angular.module('khataAngularApp')
 
     // };
 
+    $scope.foo = [{name: 'foo'}, {name: 'bar'}];
+    $scope.tags = [
+            { text: 'just' },
+            { text: 'some' },
+            { text: 'cool' },
+            { text: 'tags' }
+          ];
+
+     $scope.loadTags = function(query) {
+             return $http.get(API + "word?word=" + query);
+          };
+              
+
    CommonService.getUserId($scope.currentUser.userId).then(function(response){
           $scope.author = response.data[0].id;
       });

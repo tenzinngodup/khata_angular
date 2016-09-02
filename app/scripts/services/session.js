@@ -12,6 +12,7 @@ angular.module('khataAngularApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
   this.create = function (sessionId, userId, userRole,userDisplayName) {
     this.id = sessionId;
+    this.sessionId = sessionId;
     this.userId = userId;
     this.userRole = userRole;
     this.userDisplayName = userDisplayName;

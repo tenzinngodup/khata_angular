@@ -19,7 +19,10 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'ngFileUpload',
-    'ngCookies'
+    'ngCookies',
+    // 'decipher.tags', 
+    "ngTagsInput",
+    'ui.bootstrap.typeahead'
   ])
   .config(function ($routeProvider, $locationProvider,$facebookProvider,USER_ROLES) {
     $routeProvider
@@ -93,6 +96,11 @@ angular
         data: {
           authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         }
+      })
+      .when('/question', {
+        templateUrl: 'views/question.html',
+        controller: 'QuestionCtrl',
+        controllerAs: 'question'
       })
       .otherwise({
         redirectTo: '/'

@@ -73,8 +73,8 @@
             <ul class="nav navbar-nav">
               <li class="active" ><a href="#/"><img src="images/logoKhata_header.png" height="25"> khata/ ཁ་བཏགས་ </a></li>
               <li><a ng-href="#/addWord">Add a Word </a></li>
+              <li><a ng-href="#/question">Request Translation</a></li>
               <li><a ng-href="#/grammer">Grammar</a></li>
-
               <li><a ng-href="#/contact">Contact</a></li>
               <li ng-if="!isAuthenticated()" ><a ng-href="#/login">Login</a></li>
               <li ng-if="isAuthenticated()" ><a ng-click="logout()">Logout</a></li>
@@ -162,8 +162,9 @@
     <script src='bower_components/ngFacebook/dev/src/unmin/ngFacebook.js'></script>
     <!-- endbower -->
     <!-- endbuild -->
-                <script src="//rawgithub.com/GoDisco/ngFacebook/master/ngFacebook.js"></script>
-
+        <script src="//rawgithub.com/GoDisco/ngFacebook/master/ngFacebook.js"></script>
+        <script src="bower_components/angular-tags/dist/angular-tags-0.2.10-tpls.js"></script>
+         <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
@@ -180,6 +181,7 @@
         <script src="scripts/services/authservice.js"></script>
         <script src="scripts/controllers/user.js"></script>
         <script src="scripts/services/session.js"></script>
+        <script src="scripts/controllers/question.js"></script>
         <!-- endbuild -->
         
         <script src='https://code.responsivevoice.org/responsivevoice.js'></script>

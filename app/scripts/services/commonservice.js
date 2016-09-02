@@ -121,6 +121,19 @@ angular.module('khataAngularApp')
 	        error(function(error) {
 	        	return error;
 	        });
+		},
+		getQuestion: function(token,input){
+	         return $http({
+	            method: 'POST', 
+	            data: input,
+	            access_token:token,
+	            url:  API + 'question',
+	            headers:{
+	            	'Content-Type': 'application/json',
+	            	"Authorization": 'Bearer '+ token
+
+	            }
+	        });
 		}
 
 
