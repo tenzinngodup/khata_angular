@@ -36,6 +36,10 @@ module.exports = function(config) {
       'bower_components/ng-file-upload-shim/ng-file-upload-shim.js',
       'bower_components/ngFacebook/dev/src/unmin/ngFacebook.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
+      'bower_components/bootstrap-css/js/bootstrap.min.js',
+      'bower_components/angular-tags/dist/angular-tags-0.2.10.js',
+      'bower_components/ng-tags-input/ng-tags-input.js',
       // endbower
       "app/scripts/**/*.js",
       "test/mock/**/*.js",
