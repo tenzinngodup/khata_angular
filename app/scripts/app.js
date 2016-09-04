@@ -20,8 +20,9 @@ angular
     'ui.bootstrap',
     'ngFileUpload',
     'ngCookies',
+    "ngSails",
     // 'decipher.tags', 
-    "ngTagsInput",
+    // "ngTagsInput",
     'ui.bootstrap.typeahead'
   ])
   .config(function ($routeProvider, $locationProvider,$facebookProvider,USER_ROLES) {
@@ -169,5 +170,8 @@ angular.module('khataAngularApp').constant('API', "http://localhost:1337/")
 .constant('ALERT_STATUS', {
   authLogin: 'auth-login-alert',
   addWord: 'add-word-alert'
-});
+})
+.config(['$sailsProvider', function ($sailsProvider,API) {
+    $sailsProvider.url = "http://localhost:1337/";
+}]);
 

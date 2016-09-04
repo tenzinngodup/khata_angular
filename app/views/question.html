@@ -1,13 +1,51 @@
 <p>This is the question view.</p>
 
 <!-- <form name="userForm" novalidate>
- -->  <div class="form-group" >
+ --> <!--  <div class="form-group" >
     <input type="text" class="form-control" name="word" ng-model="question" placeholder="བོད་ཡིག་" required>
-    <span style="color:red" ng-show="userForm.word.$invalid">
+    <span style="color:red" >
     <span ng-show="userForm.word.$error.required">Word is required.</span>
     </span>
   </div>
-  <input type="submit" ng-click="createQuestion()"  class="btn btn-success" ng-disabled="userForm.word.$invalid || userForm.english_word.$invalid" >
+  <input type="submit" ng-click="createQuestion()"  class="btn btn-success" ng-disabled="userForm.word.$invalid || userForm.english_word.$invalid" > -->
 
 <!-- </form>
  -->
+
+ <input type="text" class="form-control" ng-model="question"  placeholder="Enter Name">
+  <input type="submit" ng-click="createQuestion()"  class="btn btn-success" >
+
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+<!--         <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="x in questions">
+        <td>{{x.content}}</td>
+        <td></td>
+        <td></td>
+        <td>{{x.author.displayName}}</td>
+        <td><div class="media">
+                <div class="media-left">
+                  <a >
+                    <img class="media-object img-thumbnail"  ng-src="http://graph.facebook.com/{{x.author.facebookId}}/picture" />
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading"></h4>
+                  Author:{{x.author.displayName}} <br>
+                  Created:{{x.createdAt}}
+                </div>
+              </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
